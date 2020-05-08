@@ -1,0 +1,15 @@
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\bin\Debug\ResourceDic.exe.config
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\bin\Debug\ResourceDic.exe
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\bin\Debug\ResourceDic.pdb
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\MainWindow.g.cs
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\App.g.cs
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic_MarkupCompile.cache
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic_MarkupCompile.lref
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\A.baml
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\MainWindow.baml
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic.g.resources
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic.Properties.Resources.resources
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic.csproj.GenerateResource.cache
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic.csproj.CoreCompileInputs.cache
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic.exe
+C:\Users\liuguangsheng\source\repos\WpfApp1\ResourceDic\obj\Debug\ResourceDic.pdb

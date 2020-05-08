@@ -1,0 +1,9 @@
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\DesignPattern.exe.config
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\DesignPattern.exe
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\DesignPattern.pdb
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csproj.CoreCompileInputs.cache
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.exe
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.pdb
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.Form1.resources
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csproj.GenerateResource.cache
+C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csprojAssemblyReference.cache

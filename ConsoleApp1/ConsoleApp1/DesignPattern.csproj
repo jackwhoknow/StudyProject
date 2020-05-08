@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{797B9787-2C79-4228-87A2-1E4629A6F618}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DesignPattern</RootNamespace>
+    <AssemblyName>DesignPattern</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractFactoryPattern\AccessUser.cs" />
+    <Compile Include="AbstractFactoryPattern\DataAccess.cs" />
+    <Compile Include="AbstractFactoryPattern\Department.cs" />
+    <Compile Include="AbstractFactoryPattern\IDepartment.cs" />
+    <Compile Include="AbstractFactoryPattern\IUser.cs" />
+    <Compile Include="AbstractFactoryPattern\AccessDepartment.cs" />
+    <Compile Include="AbstractFactoryPattern\SqlserverDepartment.cs" />
+    <Compile Include="AbstractFactoryPattern\SqlserverUser.cs" />
+    <Compile Include="AbstractFactoryPattern\User.cs" />
+    <Compile Include="AdapterPattern\ClassAdapter\Banner.cs" />
+    <Compile Include="AdapterPattern\ClassAdapter\IPrint.cs" />
+    <Compile Include="AdapterPattern\ClassAdapter\PrintBanner.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Adaptee.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Adaptee1.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Adapter.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Adapter1.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Player.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Target.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Target1.cs" />
+    <Compile Include="AdapterPattern\ObjectAdapter\Translator.cs" />
+    <Compile Include="BridgePattern\Abstraction.cs" />
+    <Compile Include="BridgePattern\ConcreteImplementorA.cs" />
+    <Compile Include="BridgePattern\ConcreteImplementorB.cs" />
+    <Compile Include="BridgePattern\Implementor.cs" />
+    <Compile Include="BridgePattern\RefinedAbstraction.cs" />
+    <Compile Include="BuilderPattern\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BuilderPattern\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BuilderPattern\PersonBuilder.cs" />
+    <Compile Include="BuilderPattern\PersonDirector.cs" />
+    <Compile Include="BuilderPattern\PersonThinBuilder.cs" />
+    <Compile Include="CommandPattern\BakeChickenWingCommand.cs" />
+    <Compile Include="CommandPattern\BakeMuttonCommand.cs" />
+    <Compile Include="CommandPattern\Barbecuer.cs" />
+    <Compile Include="CommandPattern\Command.cs" />
+    <Compile Include="CommandPattern\ConcreteCommand.cs" />
+    <Compile Include="CommandPattern\Invoker.cs" />
+    <Compile Include="CommandPattern\Receiver.cs" />
+    <Compile Include="CommandPattern\Waiter.cs" />
+    <Compile Include="ComponentPattern\Compoent.cs" />
+    <Compile Include="ComponentPattern\Composite.cs" />
+    <Compile Include="ComponentPattern\Leaf.cs" />
+    <Compile Include="DecoratePattern\Finery.cs" />
+    <Compile Include="DecoratePattern\Person.cs" />
+    <Compile Include="FactoryMethodPattern\AddFactory.cs" />
+    <Compile Include="FactoryMethodPattern\DivideFactory.cs" />
+    <Compile Include="FactoryMethodPattern\MathDivide.cs" />
+    <Compile Include="FactoryMethodPattern\IFactory.cs" />
+    <Compile Include="FactoryMethodPattern\MathOperation.cs" />
+    <Compile Include="FactoryMethodPattern\MathMultiply.cs" />
+    <Compile Include="FactoryMethodPattern\MathSubtract.cs" />
+    <Compile Include="FactoryMethodPattern\MathSum.cs" />
+    <Compile Include="FactoryMethodPattern\MultiplyFactory.cs" />
+    <Compile Include="FactoryMethodPattern\SubtractFactory.cs" />
+    <Compile Include="InterpreterPattern\AbstractExpression.cs" />
+    <Compile Include="InterpreterPattern\Context.cs" />
+    <Compile Include="InterpreterPattern\Demo\Expression.cs" />
+    <Compile Include="InterpreterPattern\Demo\Note.cs" />
+    <Compile Include="InterpreterPattern\Demo\PlayContext.cs" />
+    <Compile Include="InterpreterPattern\Demo\Scale.cs" />
+    <Compile Include="InterpreterPattern\Demo\Speed.cs" />
+    <Compile Include="InterpreterPattern\NominalExpression.cs" />
+    <Compile Include="InterpreterPattern\TerminalExpression.cs" />
+    <Compile Include="IteratorPattern\Book.cs" />
+    <Compile Include="IteratorPattern\BookShelf.cs" />
+    <Compile Include="IteratorPattern\BookShelfIterator.cs" />
+    <Compile Include="IteratorPattern\IAggregate.cs" />
+    <Compile Include="IteratorPattern\Iterator.cs" />
+    <Compile Include="MediatorPattern\Colleague.cs" />
+    <Compile Include="MediatorPattern\ConcreteColleague1.cs" />
+    <Compile Include="MediatorPattern\ConcreteColleague2.cs" />
+    <Compile Include="MediatorPattern\ConcreteMediator.cs" />
+    <Compile Include="MediatorPattern\Demo\Country.cs" />
+    <Compile Include="MediatorPattern\Demo\Iraq.cs" />
+    <Compile Include="MediatorPattern\Demo\UnitedNationSecurityCouncil.cs" />
+    <Compile Include="MediatorPattern\Demo\UniteNations.cs" />
+    <Compile Include="MediatorPattern\Demo\USA.cs" />
+    <Compile Include="MediatorPattern\Mediator.cs" />
+    <Compile Include="MemoPattern\Caretaker.cs" />
+    <Compile Include="MemoPattern\MemoPattern.cs" />
+    <Compile Include="MemoPattern\Originator.cs" />
+    <Compile Include="ObserverPattern\Boss.cs" />
+    <Compile Include="ObserverPattern\NBAObserver.cs" />
+    <Compile Include="ObserverPattern\Secretary.cs" />
+    <Compile Include="ObserverPattern\StockObserver.cs" />
+    <Compile Include="ObserverPattern\Subject.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PrototypePattern\Resume.cs" />
+    <Compile Include="PrototypePattern\WorkExperience.cs" />
+    <Compile Include="ProxyPattern\GiveGift.cs" />
+    <Compile Include="ProxyPattern\Proxy.cs" />
+    <Compile Include="ProxyPattern\Pursuit.cs" />
+    <Compile Include="ProxyPattern\SchoolGirl.cs" />
+    <Compile Include="ResponsibilityChainPattern\Demo\CommManager.cs" />
+    <Compile Include="ResponsibilityChainPattern\ConcreteHandler1.cs" />
+    <Compile Include="ResponsibilityChainPattern\ConcreteHandler2.cs" />
+    <Compile Include="ResponsibilityChainPattern\ConcreteHandler3.cs" />
+    <Compile Include="ResponsibilityChainPattern\Demo\GeneralManager.cs" />
+    <Compile Include="ResponsibilityChainPattern\Handler.cs" />
+    <Compile Include="ResponsibilityChainPattern\Demo\Majordomo.cs" />
+    <Compile Include="ResponsibilityChainPattern\Demo\Manager.cs" />
+    <Compile Include="ResponsibilityChainPattern\Demo\Request.cs" />
+    <Compile Include="ShareClassPattern\ConcreteFlyWeight.cs" />
+    <Compile Include="ShareClassPattern\Demo\ConcreteWebsite.cs" />
+    <Compile Include="ShareClassPattern\Demo\User.cs" />
+    <Compile Include="ShareClassPattern\Demo\Website.cs" />
+    <Compile Include="ShareClassPattern\Demo\WebsiteFactory.cs" />
+    <Compile Include="ShareClassPattern\FlyWeight.cs" />
+    <Compile Include="ShareClassPattern\FlyWeightFactory.cs" />
+    <Compile Include="ShareClassPattern\UnSharedConcreteFlyWeight.cs" />
+    <Compile Include="SimpleFactory\Divide.cs" />
+    <Compile Include="SimpleFactory\Multiply.cs" />
+    <Compile Include="SimpleFactory\Operation.cs" />
+    <Compile Include="SimpleFactory\OperationFactory.cs" />
+    <Compile Include="SimpleFactory\Subtract.cs" />
+    <Compile Include="SimpleFactory\Sum.cs" />
+    <Compile Include="SingletonPattern\Singleton.cs" />
+    <Compile Include="StatePattern\AfternoonState.cs" />
+    <Compile Include="StatePattern\EvenningState.cs" />
+    <Compile Include="StatePattern\Forenoon.cs" />
+    <Compile Include="StatePattern\NoonState.cs" />
+    <Compile Include="StatePattern\RestState.cs" />
+    <Compile Include="StatePattern\SleepingState.cs" />
+    <Compile Include="StatePattern\State.cs" />
+    <Compile Include="StatePattern\Work.cs" />
+    <Compile Include="StrategyPattern\Context.cs" />
+    <Compile Include="StrategyPattern\Strategy.cs" />
+    <Compile Include="TemplateMethod\AbstractDisplay.cs" />
+    <Compile Include="TemplateMethod\CharDisplay.cs" />
+    <Compile Include="TemplateMethod\StringDisplay.cs" />
+    <Compile Include="TemplatePattern\TestPaper.cs" />
+    <Compile Include="TemplatePattern\TestPaperA.cs" />
+    <Compile Include="TemplatePattern\TestPaperB.cs" />
+    <Compile Include="VisitorPattern\ConcreteElementA.cs" />
+    <Compile Include="VisitorPattern\ConcreteElementB.cs" />
+    <Compile Include="VisitorPattern\ConcreteVisitor2.cs" />
+    <Compile Include="VisitorPattern\ConcreteVisitor1.cs" />
+    <Compile Include="VisitorPattern\Demo\Failure.cs" />
+    <Compile Include="VisitorPattern\Demo\Love.cs" />
+    <Compile Include="VisitorPattern\Demo\Man.cs" />
+    <Compile Include="VisitorPattern\Demo\ObjectStructure.cs" />
+    <Compile Include="VisitorPattern\Demo\Person.cs" />
+    <Compile Include="VisitorPattern\Demo\Status.cs" />
+    <Compile Include="VisitorPattern\Demo\Success.cs" />
+    <Compile Include="VisitorPattern\Demo\Woman.cs" />
+    <Compile Include="VisitorPattern\Element.cs" />
+    <Compile Include="VisitorPattern\ObjectStructureNew.cs" />
+    <Compile Include="VisitorPattern\Visitor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="App1.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BuilderPattern\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

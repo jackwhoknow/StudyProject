@@ -223,16 +223,42 @@ namespace ConsoleApp2
             //4.1.1 理解并发集合提供的功能
             // lock
             //4.1.2 ConcurrentQueue
+            //var sw = Stopwatch.StartNew();
+            //keyList = new ConcurrentQueue<string>();
+            //var tAsync = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys());
+            //string lastKey;
+            //while((tAsync.Status==TaskStatus.Running || 
+            //    tAsync.Status == TaskStatus.WaitingToRun))
+            //{
+            //    var countResult = keyList.Count(key => key.Contains("F"));
+            //    Console.WriteLine("So far,the number of keys that cotains an F is: {0}", countResult);
+            //    if(keyList.TryPeek(out lastKey))
+            //    {
+            //        Console.WriteLine("The first key in the queue is: {0}", lastKey);
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("No keys yet");
+            //    }
+            //    System.Threading.Thread.Sleep(500);
+            //}
+            //tAsync.Wait();
+            //Console.WriteLine("Number of keys in the List: {0}", keyList.Count);
+            //Console.WriteLine(sw.Elapsed.ToString());
+
+            //4.1.3 理解并行的生产者-消费者模式
             var sw = Stopwatch.StartNew();
-            keyList = new ConcurrentQueue<string>();
-            var tAsync = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys());
+            _keysQueue = new ConcurrentQueue<string>();
+            _byteArrayQueue = new ConcurrentQueue<byte[]>();
+            var taskAESKeys = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys(Environment.ProcessorCount-1));
+            var taskHexStrings = Task.Factory.StartNew(() => ConvertAESKeyToHex(taskAESKeys));
             string lastKey;
-            while((tAsync.Status==TaskStatus.Running || 
-                tAsync.Status == TaskStatus.WaitingToRun))
+            while ((taskHexStrings.Status == TaskStatus.Running ||
+                taskHexStrings.Status == TaskStatus.WaitingToRun))
             {
-                var countResult = keyList.Count(key => key.Contains("F"));
+                var countResult = _keysQueue.Count(key => key.Contains("F"));
                 Console.WriteLine("So far,the number of keys that cotains an F is: {0}", countResult);
-                if(keyList.TryPeek(out lastKey))
+                if (_keysQueue.TryPeek(out lastKey))
                 {
                     Console.WriteLine("The first key in the queue is: {0}", lastKey);
                 }
@@ -242,12 +268,9 @@ namespace ConsoleApp2
                 }
                 System.Threading.Thread.Sleep(500);
             }
-            tAsync.Wait();
-            Console.WriteLine("Number of keys in the List: {0}", keyList.Count);
+            Task.WaitAll(taskAESKeys, taskHexStrings);
+            Console.WriteLine("Number of keys in the List: {0}", _keysQueue.Count);
             Console.WriteLine(sw.Elapsed.ToString());
-
-            //4.1.3 理解并行的生产者-消费者模式
-
             #endregion
             Console.WriteLine("Finished");
             Console.ReadLine();
@@ -466,13 +489,26 @@ namespace ConsoleApp2
                 {
                     aesM.GenerateKey();
                     byte[] result = aesM.Key;
-                    string hexString = ConvertToTextString(result);
-                    keyList.Enqueue(hexString);
+                    _byteArrayQueue.Enqueue(result);
                 }
             });
             Console.WriteLine("AES: " + sw.Elapsed.ToString());
         }
-
+        private static void ConvertAESKeyToHex(Task taskProducer)
+        {
+            var sw = Stopwatch.StartNew();
+            while(taskProducer.Status==TaskStatus.Running || taskProducer.Status==TaskStatus.WaitingToRun ||
+                (_byteArrayQueue.Count>0))
+            {
+                Byte[] result;
+                if(_byteArrayQueue.TryDequeue(out result))
+                {
+                    string hexString = ConvertToTextString(result);
+                    _keysQueue.Enqueue(hexString);
+                }
+            }
+            Debug.WriteLine("HEX: "+ sw.Elapsed.ToString());
+        }
         private static void GenerateMD5Hashes()
         {
             var sw = Stopwatch.StartNew();

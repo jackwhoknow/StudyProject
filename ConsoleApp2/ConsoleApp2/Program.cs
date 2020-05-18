@@ -247,29 +247,65 @@ namespace ConsoleApp2
             //Console.WriteLine(sw.Elapsed.ToString());
 
             //4.1.3 理解并行的生产者-消费者模式
+            //var sw = Stopwatch.StartNew();
+            //_keysQueue = new ConcurrentQueue<string>();
+            //_byteArrayQueue = new ConcurrentQueue<byte[]>();
+            //var taskAESKeys = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys(Environment.ProcessorCount-1));
+            //var taskHexStrings = Task.Factory.StartNew(() => ConvertAESKeyToHex(taskAESKeys));
+            //string lastKey;
+            //while ((taskHexStrings.Status == TaskStatus.Running ||
+            //    taskHexStrings.Status == TaskStatus.WaitingToRun))
+            //{
+            //    var countResult = _keysQueue.Count(key => key.Contains("F"));
+            //    Console.WriteLine("So far,the number of keys that cotains an F is: {0}", countResult);
+            //    if (_keysQueue.TryPeek(out lastKey))
+            //    {
+            //        Console.WriteLine("The first key in the queue is: {0}", lastKey);
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("No keys yet");
+            //    }
+            //    System.Threading.Thread.Sleep(500);
+            //}
+            //Task.WaitAll(taskAESKeys, taskHexStrings);
+            //Console.WriteLine("Number of keys in the List: {0}", _keysQueue.Count);
+            //Console.WriteLine(sw.Elapsed.ToString());
+
+            //使用多生产者和消费者
             var sw = Stopwatch.StartNew();
             _keysQueue = new ConcurrentQueue<string>();
             _byteArrayQueue = new ConcurrentQueue<byte[]>();
-            var taskAESKeys = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys(Environment.ProcessorCount-1));
-            var taskHexStrings = Task.Factory.StartNew(() => ConvertAESKeyToHex(taskAESKeys));
-            string lastKey;
-            while ((taskHexStrings.Status == TaskStatus.Running ||
-                taskHexStrings.Status == TaskStatus.WaitingToRun))
+            _validateKeys = new ConcurrentQueue<string>();
+
+            int taskAESKeysMax = Environment.ProcessorCount / 2;
+            int taskHexStringsMax = Environment.ProcessorCount - taskAESKeysMax-1;
+            var taskAESKeys = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys(taskAESKeysMax));
+
+            Task[] taskHexStrings = new Task[taskHexStringsMax];
+            for(int i=0;i< taskHexStringsMax;i++)
             {
-                var countResult = _keysQueue.Count(key => key.Contains("F"));
-                Console.WriteLine("So far,the number of keys that cotains an F is: {0}", countResult);
-                if (_keysQueue.TryPeek(out lastKey))
+                System.Threading.Interlocked.Increment(ref taskHexStringRunning);
+                taskHexStrings[i]= Task.Factory.StartNew(() => 
                 {
-                    Console.WriteLine("The first key in the queue is: {0}", lastKey);
-                }
-                else
-                {
-                    Console.WriteLine("No keys yet");
-                }
-                System.Threading.Thread.Sleep(500);
+                    try
+                    {
+                        ConvertAESKeyToHex(taskAESKeys);
+                    }
+                    finally
+                    {
+                        System.Threading.Interlocked.Decrement(ref taskHexStringRunning);
+                    }
+                });
             }
-            Task.WaitAll(taskAESKeys, taskHexStrings);
+
+            var taskValidteKeys = Task.Factory.StartNew(() => ValidateKeys());
+            taskValidteKeys.Wait();
+
+            Task.WaitAll(taskHexStrings);
             Console.WriteLine("Number of keys in the List: {0}", _keysQueue.Count);
+            Console.WriteLine("Number of byteArray in the List: {0}", _byteArrayQueue.Count);
+            Console.WriteLine("Number of valid key in the List: {0}", _validateKeys.Count);
             Console.WriteLine(sw.Elapsed.ToString());
             #endregion
             Console.WriteLine("Finished");
@@ -477,6 +513,7 @@ namespace ConsoleApp2
 
         private static ConcurrentQueue<Byte[]> _byteArrayQueue;
         private static ConcurrentQueue<string> _keysQueue;
+        private static ConcurrentQueue<string> _validateKeys;
         private static void ParallelPartitionGenerateAESKeys(int maxDegree)
         {
             var parallelOptions = new ParallelOptions();
@@ -485,6 +522,7 @@ namespace ConsoleApp2
             Parallel.ForEach(Partitioner.Create(1, NUM_AES_KEYS+1), parallelOptions, range =>
             {
                 var aesM = new AesManaged();
+                
                 for (int i = range.Item1; i < range.Item2; i++)
                 {
                     aesM.GenerateKey();
@@ -493,6 +531,46 @@ namespace ConsoleApp2
                 }
             });
             Console.WriteLine("AES: " + sw.Elapsed.ToString());
+        }
+        public static string[] _invalidHexValues = { "AF", "BD", "BF", "CF", "DA", "FA", "FE", "FF" };
+        private static int Max_Invalid_Hex_Values = 3;
+        private static int taskHexStringRunning = 0;
+        private static bool IsValidKey(string key)
+        {
+            var sw = Stopwatch.StartNew();
+            int count = 0;
+            for(int i=0;i< _invalidHexValues.Length;i++)
+            {
+                if(key.Contains(_invalidHexValues[i]))
+                {
+                    count++;
+                    if(count== Max_Invalid_Hex_Values)
+                    {
+                        return true;
+                    }
+                    if(((_invalidHexValues.Length-i)+count)< Max_Invalid_Hex_Values)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+        private static void ValidateKeys()
+        {
+            var sw = new Stopwatch();
+            while(taskHexStringRunning > 0 || _keysQueue.Count>0)
+            {
+                string hexString;
+                if(_keysQueue.TryDequeue(out hexString))
+                {
+                    if(IsValidKey(hexString))
+                    {
+                        _validateKeys.Enqueue(hexString);
+                    }
+                }
+            }
+            Console.WriteLine(sw.Elapsed.ToString());
         }
         private static void ConvertAESKeyToHex(Task taskProducer)
         {

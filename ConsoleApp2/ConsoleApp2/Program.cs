@@ -273,43 +273,44 @@ namespace ConsoleApp2
             //Console.WriteLine(sw.Elapsed.ToString());
 
             //使用多生产者和消费者
-            var sw = Stopwatch.StartNew();
-            _keysQueue = new ConcurrentQueue<string>();
-            _byteArrayQueue = new ConcurrentQueue<byte[]>();
-            _validateKeys = new ConcurrentQueue<string>();
+            //var sw = Stopwatch.StartNew();
+            //_keysQueue = new ConcurrentQueue<string>();
+            //_byteArrayQueue = new ConcurrentQueue<byte[]>();
+            //_validateKeys = new ConcurrentQueue<string>();
 
-            int taskAESKeysMax = Environment.ProcessorCount / 2;
-            int taskHexStringsMax = Environment.ProcessorCount - taskAESKeysMax-1;
-            var taskAESKeys = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys(taskAESKeysMax));
+            //int taskAESKeysMax = Environment.ProcessorCount / 2;
+            //int taskHexStringsMax = Environment.ProcessorCount - taskAESKeysMax-1;
+            //var taskAESKeys = Task.Factory.StartNew(() => ParallelPartitionGenerateAESKeys(taskAESKeysMax));
 
-            Task[] taskHexStrings = new Task[taskHexStringsMax];
-            for(int i=0;i< taskHexStringsMax;i++)
-            {
-                System.Threading.Interlocked.Increment(ref taskHexStringRunning);
-                taskHexStrings[i]= Task.Factory.StartNew(() => 
-                {
-                    try
-                    {
-                        ConvertAESKeyToHex(taskAESKeys);
-                    }
-                    finally
-                    {
-                        System.Threading.Interlocked.Decrement(ref taskHexStringRunning);
-                    }
-                });
-            }
+            //Task[] taskHexStrings = new Task[taskHexStringsMax];
+            //for(int i=0;i< taskHexStringsMax;i++)
+            //{
+            //    System.Threading.Interlocked.Increment(ref taskHexStringRunning);
+            //    taskHexStrings[i]= Task.Factory.StartNew(() => 
+            //    {
+            //        try
+            //        {
+            //            ConvertAESKeyToHex(taskAESKeys);
+            //        }
+            //        finally
+            //        {
+            //            System.Threading.Interlocked.Decrement(ref taskHexStringRunning);
+            //        }
+            //    });
+            //}
 
-            var taskValidteKeys = Task.Factory.StartNew(() => ValidateKeys());
-            taskValidteKeys.Wait();
+            //var taskValidteKeys = Task.Factory.StartNew(() => ValidateKeys());
+            //taskValidteKeys.Wait();
 
-            Task.WaitAll(taskHexStrings);
-            Console.WriteLine("Number of keys in the List: {0}", _keysQueue.Count);
-            Console.WriteLine("Number of byteArray in the List: {0}", _byteArrayQueue.Count);
-            Console.WriteLine("Number of valid key in the List: {0}", _validateKeys.Count);
-            Console.WriteLine(sw.Elapsed.ToString());
+            //Task.WaitAll(taskHexStrings);
+            //Console.WriteLine("Number of keys in the List: {0}", _keysQueue.Count);
+            //Console.WriteLine("Number of byteArray in the List: {0}", _byteArrayQueue.Count);
+            //Console.WriteLine("Number of valid key in the List: {0}", _validateKeys.Count);
+            //Console.WriteLine(sw.Elapsed.ToString());
+
+            //BlockingCollection
+            BlockCollectionDemo.Run();
             #endregion
-            Console.WriteLine("Finished");
-            Console.ReadLine();
         }
 
         #region---------- Parallel.Invoke(AAA, BBB, CCC......)----------

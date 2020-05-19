@@ -115,6 +115,5 @@ namespace ConsoleApp2
             }
             return false;
         }
-        private static
     }
 }

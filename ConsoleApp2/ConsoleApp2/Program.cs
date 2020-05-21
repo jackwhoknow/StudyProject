@@ -309,7 +309,13 @@ namespace ConsoleApp2
             //Console.WriteLine(sw.Elapsed.ToString());
 
             //BlockingCollection
-            BlockCollectionDemo.Run();
+            //BlockCollectionDemo.Run();
+
+            //Barrier
+            //BarrierDemo.Run();
+
+            //Mutex
+            MutexDemo.Run();
             #endregion
         }
 

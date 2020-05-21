@@ -1,0 +1,39 @@
+﻿<Window x:Class="WpfApp5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Content="服务器IP：" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></Label>
+        <Label Content="监听端口：" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></Label>
+        <Label Content="接受信息：" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></Label>
+        <Label Content="发送信息：" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" ></Label>
+        
+        <TextBox Name="tbServerIP" Grid.Row="0" Grid.Column="1" Height="50"></TextBox>
+        <TextBox Name="tbListenPort" Grid.Row="1" Grid.Column="1" Height="50"></TextBox>
+        <TextBox Name="tbAcceptInfo" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Height="50"></TextBox>
+        <TextBox Name="tbSendInfo" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Height="50"></TextBox>
+        <ListBox Name="lbServerStatus" Grid.Row="0" Grid.Column="2" Grid.RowSpan="2"></ListBox>
+
+        <StackPanel Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Orientation="Horizontal">
+            <Button Name="btnStartListen" Content="开始监听" Width="120" Height="30" Margin="50,0"></Button>
+            <Button Name="btnSendInfo" Content="发送信息" Width="120" Height="30" Margin="10,0"></Button>
+            <Button Name="btnAcceptInfo" Content="停止监听" Width="120" Height="30" Margin="40,0"></Button>
+        </StackPanel>
+    </Grid>
+</Window>

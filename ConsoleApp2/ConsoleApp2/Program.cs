@@ -315,7 +315,33 @@ namespace ConsoleApp2
             //BarrierDemo.Run();
 
             //Mutex
-            MutexDemo.Run();
+            //MutexDemo.Run();
+            //ManualResetEventSlimDemo.Run();
+
+            //ManualResetEvent
+            //ManualResetEventDemo mreDemo = new ManualResetEventDemo();
+            //mreDemo.CreateThreads();
+            //while(true)
+            //{
+            //    string input = Console.ReadLine();
+            //    if(input.Trim().ToLower()=="stop")
+            //    {
+            //        Console.WriteLine("线程已停止运行");
+            //        mreDemo.Reset();
+            //    }
+            //    else if(input.Trim().ToLower() == "run")
+            //    {
+            //        Console.WriteLine("线程开启运行");
+            //        mreDemo.Set();
+            //    }
+            //}
+
+            //SemaphoreSlimDemo.Run();
+
+            //CountdownEventDemo.Run();
+
+            //AtomicOperationDemo.Run();
+            SpinLockDemo1.Run();
             #endregion
         }
 

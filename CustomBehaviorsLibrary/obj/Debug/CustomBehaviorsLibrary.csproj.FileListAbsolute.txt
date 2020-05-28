@@ -1,0 +1,10 @@
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\bin\Debug\CustomBehaviorsLibrary.dll
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\bin\Debug\CustomBehaviorsLibrary.pdb
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\obj\Debug\CustomBehaviorsLibrary.csproj.CoreCompileInputs.cache
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\obj\Debug\CustomBehaviorsLibrary.dll
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\obj\Debug\CustomBehaviorsLibrary.pdb
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\bin\Debug\Microsoft.Expression.Interactions.dll
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\bin\Debug\Microsoft.Expression.Interactions.xml
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\bin\Debug\System.Windows.Interactivity.xml
+C:\Users\liuguangsheng\source\repos\CustomBehaviorsLibrary\obj\Debug\CustomBehaviorsLibrary.csproj.CopyComplete

@@ -1,0 +1,6 @@
+C:\Users\liuguangsheng\source\repos\ThStructureCheck\ThBasicLibrary\bin\Debug\ThBasicLibrary.dll
+C:\Users\liuguangsheng\source\repos\ThStructureCheck\ThBasicLibrary\bin\Debug\ThBasicLibrary.pdb
+C:\Users\liuguangsheng\source\repos\ThStructureCheck\ThBasicLibrary\obj\Debug\ThBasicLibrary.csprojAssemblyReference.cache
+C:\Users\liuguangsheng\source\repos\ThStructureCheck\ThBasicLibrary\obj\Debug\ThBasicLibrary.csproj.CoreCompileInputs.cache
+C:\Users\liuguangsheng\source\repos\ThStructureCheck\ThBasicLibrary\obj\Debug\ThBasicLibrary.dll
+C:\Users\liuguangsheng\source\repos\ThStructureCheck\ThBasicLibrary\obj\Debug\ThBasicLibrary.pdb

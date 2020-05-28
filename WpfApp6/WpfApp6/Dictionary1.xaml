@@ -1,0 +1,48 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:WpfApp6"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    >
+    <Style x:Key="HappyTitledElementStyle">
+        <Setter Property="Control.Background">
+            <Setter.Value>
+                <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 32 32"
+                    ImageSource="pack://application:,,,/WpfApp6;component/Happy.jpg" Opacity="0.3"></ImageBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BigFontButtonStyle" BasedOn="{StaticResource HappyTitledElementStyle}">
+        <Setter Property="Control.FontFamily" Value="Times New Roman"/>
+        <Setter Property="Control.FontWeight" Value="Bold"/>
+        <Setter Property="Control.FontSize" Value="14"/>
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="Control.IsFocused" Value="True"></Condition>
+                    <Condition Property="Control.IsMouseOver" Value="True"></Condition>
+                </MultiTrigger.Conditions>
+                <MultiTrigger.Setters>
+                    <Setter Property="Control.Foreground" Value="DarkRed"></Setter>
+                </MultiTrigger.Setters>
+            </MultiTrigger>
+            <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.2" Storyboard.TargetProperty="FontSize" To="22"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:1.8" Storyboard.TargetProperty="FontSize"></DoubleAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

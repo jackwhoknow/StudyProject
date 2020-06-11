@@ -8,29 +8,16 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp2
 {
-    public static class PlnqDemo1
+    public static class PlnqDemo2
     {
-        private static ConcurrentQueue<String> Keys;
         public static void Run()
         {
-            //Keys = new ConcurrentQueue<string>();
-
-            //Console.ReadLine();
-            //Console.WriteLine("Started.");
-            //var cts = new System.Threading.CancellationTokenSource();
-            //var ct = cts.Token;
-            //var sw = Stopwatch.StartNew();
-
             string[] words =
                 { "Day","Car","Land","Road","Mountain","River","Sea","Shore","Mouse"};
-            var query = from word in words.AsParallel().WithExecutionMode(ParallelExecutionMode.ForceParallelism)
+            var query = (from word in words.AsParallel()
                         where (word.Contains("a"))
-                        orderby word descending
-                        select word;
-            foreach(string result in query)
-            {
-                Console.WriteLine(result);
-            }
+                        select CountLetters(word)).Sum();
+            Console.WriteLine("The total number of letters for the words that contains an 'a' is {0}",query);
             Console.ReadLine();
         }
         static int CountLetters(String key)

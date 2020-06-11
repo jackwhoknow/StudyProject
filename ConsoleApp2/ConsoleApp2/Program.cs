@@ -310,7 +310,8 @@ namespace ConsoleApp2
 
             //BlockingCollection
             //BlockCollectionDemo.Run();
-
+            #endregion
+            #region---------------第五章 协调数据结构------------
             //Barrier
             //BarrierDemo.Run();
 
@@ -341,7 +342,14 @@ namespace ConsoleApp2
             //CountdownEventDemo.Run();
 
             //AtomicOperationDemo.Run();
-            SpinLockDemo1.Run();
+            //SpinLockDemo1.Run();
+            #endregion
+            #region---------------第六章 声明式数据并行----------
+            //PlnqDemo1.Run();
+            //PlnqDemo2.Run();
+            //PlnqDemo3.Run();
+            //PlnqDemo4.Run();
+            PlnqDemo5.Run();
             #endregion
         }
 

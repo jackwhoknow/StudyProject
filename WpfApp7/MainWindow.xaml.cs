@@ -23,6 +23,32 @@ namespace WpfApp7
         public MainWindow()
         {
             InitializeComponent();
+            this.lb1.Items.Add("A");
+            this.lb1.Items.Add("B");
+            this.lb1.Items.Add("C");
+            this.lb1.Items.Add("D");
+            this.lb1.Items.Add("E");
+            this.lb1.Items.Add("F");
+            this.lb1.Items.Add("G");
+            this.lb1.Items.Add("H");
+            this.lb1.Items.Add("I");
+            this.lb1.Items.Add("J");
+            this.lb1.Items.Add("K");
+            this.lb1.Items.Add("L");
+            this.lb1.Items.Add("M");
+            this.lb1.Items.Add("N");
+            this.lb1.Items.Add("O");
+            this.lb1.Items.Add("P");
+            this.lb1.Items.Add("Q");
+            this.lb1.Items.Add("R");
+            this.lb1.Items.Add("S");
+            this.lb1.Items.Add("T");
+            this.lb1.Items.Add("U");
+            this.lb1.Items.Add("V");
+            this.lb1.Items.Add("W");
+            this.lb1.Items.Add("X");
+            this.lb1.Items.Add("Y");
+            this.lb1.Items.Add("Z");
         }
     }
 }

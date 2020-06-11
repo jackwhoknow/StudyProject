@@ -5,13 +5,193 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp7"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="400">
+        Title="MainWindow" Height="300" Width="400">
+    <Window.Resources>
+        <GeometryGroup x:Key="Geometry">
+            <RectangleGeometry Rect="0,0 100,100" RadiusX="5" RadiusY="5"/>
+            <EllipseGeometry  Center="150,50" RadiusX="35" RadiusY="25"/>
+        </GeometryGroup>
+    </Window.Resources>
     <Grid>
+        <Button Margin="10" Padding="5" Width="200" Height="40" Style="{StaticResource CustomButtonBtyle}">
+            A simple Button with a Custom Template
+        </Button>
+        <TextBox Name="AAA" Width="200" Height="50" VerticalAlignment="Bottom"></TextBox>
+        <ListBox x:Name="lb1"  Width="100" HorizontalAlignment="Left"></ListBox>
+    </Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <Button Name="btnClick" Style="{StaticResource BigFontButtonStyle}">Click me</Button>
         <Button Name="btnTest" Grid.Row="1" Style="{StaticResource BigFontButtonStyle}">A Customized Button</Button>
-    </Grid>
+        <Ellipse Grid.Row="0" Grid.Column="1" Fill="Yellow" Stroke="Blue" Stretch="Fill" Margin="5"></Ellipse>
+        <Rectangle Grid.Row="1" Grid.Column="1" Margin="5" Fill="Green" RadiusX="5" RadiusY="5"></Rectangle>
+    </Grid>-->
+    <!--<Grid>
+        <Grid.Background>
+            <ImageBrush  TileMode="Tile" Viewport="0,0 32,32" ViewboxUnits="Absolute" ImageSource="Happy.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock>The first row of a Grid.</TextBlock>
+        --><!--<Viewbox Grid.Row="1" Stretch="Fill">
+            <Canvas Width="400" Height="200">
+                <Rectangle Canvas.Left="30" Canvas.Top="40" Fill="Green" Width="100" Height="50" RadiusX="10" RadiusY="10"></Rectangle>
+                <Ellipse Canvas.Left="10" Canvas.Top="50" Fill="Yellow" Stroke="Blue" Width="100" Height="50"></Ellipse>
+                <Line Canvas.Left="5" Canvas.Top="100" Stroke="Blue" X1="10" Y1="0" X2="10" Y2="100"></Line>
+                <Polyline StrokeDashArray="5 2 3" Stroke="Blue" StrokeThickness="5" Points="10,150 30,140,50,160 70,130 90,170 110,120 130,180 150,110 170,190 190,100 210,190 "></Polyline>
+                <Polygon Canvas.Left="5" Canvas.Top="-110" Stroke="Blue" StrokeThickness="5" Points="10,150 30,140,50,160 70,130 90,170 110,120 130,180 150,110 170,190 190,100 210,230 "></Polygon>
+                <Polygon SnapsToDevicePixels="True" Canvas.Left="220" Canvas.Top="-70" Fill="Yellow" FillRule="EvenOdd" Stroke="Blue" StrokeThickness="5" Points="15,200 68,70 110,200 0,125 135,125"></Polygon>
+            </Canvas>
+        </Viewbox>-->
+        <!--<Rectangle Grid.Row="1">
+            <Rectangle.Fill>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="Blue" Offset="0"/>
+                    <GradientStop Color="Green" Offset="0.25"/>
+                    <GradientStop Color="Red" Offset="0.5"/>
+                    <GradientStop Color="Orange" Offset="0.75"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>-->
+        <!--<Ellipse Grid.Row="1" Stroke="Black" StrokeThickness="1" Width="200" Height="200"> 
+            <Ellipse.Fill>
+                <RadialGradientBrush RadiusX="1" RadiusY="1" GradientOrigin="0.7,0.3">
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Blue" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>-->
+        <!--<Button Name="cmd" Grid.Row="1" Margin="3" Padding="5">Is this a real Button?</Button>
+        <Rectangle Grid.Row="2" Margin="3">
+            <Rectangle.Fill>
+                <VisualBrush Visual="{Binding ElementName=cmd}"></VisualBrush>
+            </Rectangle.Fill>
+        </Rectangle>-->
+        <!--<Rectangle Grid.Row="1" Opacity="0" Stroke="Blue" Fill="Yellow" Width="100" Height="10" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="45"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>--><!--
+        <Path Fill="Yellow" Stroke="Blue">
+            <Path.Data>
+                <RectangleGeometry Rect="0,0 100,50" RadiusX="5" RadiusY="5"/>
+            </Path.Data>
+        </Path>
+        <Path>
+            <Path.Data>
+                <LineGeometry StartPoint="0,0" EndPoint="10,100"></LineGeometry>
+            </Path.Data>
+        </Path>
+        <Path Fill="Yellow" Stroke="Blue">
+            <Path.Data>
+                <EllipseGeometry RadiusX="50" RadiusY="50"> </EllipseGeometry>
+            </Path.Data>
+        </Path>
+        <Path Fill="Green" Stroke="Blue" Margin="5" > 
+        </Path>
+        <Path Grid.Row="1" Fill="Yellow" Stroke="Blue" Data="{StaticResource Geometry}">            
+        </Path>
+        <Path Grid.Row="2" Fill="Green" Stroke="Blue" Data="{StaticResource Geometry}">
+        </Path>
+    </Grid>-->
+    <!--<Canvas>
+        --><!--<Path Fill="Yellow" Stroke="Blue" Margin="5" Canvas.Top="10" Canvas.Left="10">
+            <Path.Data>
+                <GeometryGroup>
+                    <RectangleGeometry Rect="0,0 100,100"></RectangleGeometry>
+                    <EllipseGeometry Center="150,50" RadiusX="35" RadiusY="25"></EllipseGeometry>
+                </GeometryGroup>
+            </Path.Data>
+        </Path>-->
+        <!--<Path Fill="Yellow" Stroke="Blue" Margin="5" Canvas.Top="10" Canvas.Left="10" Data="{StaticResource Geometry}"></Path>
+        <Path Fill="Green" Stroke="Blue" Margin="5" Canvas.Top="150" Canvas.Left="10" Data="{StaticResource Geometry}"></Path>-->
+
+        <!--<Path Fill="Yellow" Stroke="Blue" Margin="5" Canvas.Top="10" Canvas.Left="10" >
+            <Path.Data>
+                <GeometryGroup FillRule="EvenOdd">
+                    <RectangleGeometry Rect="0,0 100,100"/>
+                    <EllipseGeometry Center="50,50" RadiusX="35" RadiusY="25"/>                    
+                </GeometryGroup>
+            </Path.Data>
+        </Path>
+        <TextBlock Canvas.Top="50" Canvas.Left="20" FontSize="25" FontWeight="Bold">Hello There</TextBlock>-->
+
+        <!--<Path Fill="Yellow" Stroke="Blue" Margin="5">
+            <Path.Data>
+                <CombinedGeometry GeometryCombineMode="Exclude">
+                    <CombinedGeometry.Geometry1>
+                        <RectangleGeometry Rect="0,0 100,100"></RectangleGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <EllipseGeometry Center="86,50" RadiusX="65" RadiusY="35"></EllipseGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </Path.Data>
+        </Path>-->
+
+        <!--<Path Fill="Yellow" Stroke="Blue">
+            <Path.Data>
+                <CombinedGeometry GeometryCombineMode="Union">
+                    <CombinedGeometry.Geometry1>
+                        <CombinedGeometry GeometryCombineMode="Exclude">
+                            <CombinedGeometry.Geometry1>
+                                <EllipseGeometry Center="50,50" RadiusX="50" RadiusY="50"></EllipseGeometry>
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <EllipseGeometry Center="50,50" RadiusX="40" RadiusY="40"></EllipseGeometry>
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <RectangleGeometry Rect="44,5 10,90">
+                            <RectangleGeometry.Transform>
+                                <RotateTransform Angle="45" CenterX="45" CenterY="50"></RotateTransform>
+                            </RectangleGeometry.Transform>
+                        </RectangleGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+                
+            </Path.Data>
+        </Path>-->
+
+        <!--<Path Stroke="Blue">
+            <Path.Data>
+                <PathGeometry>
+                    <PathFigure IsClosed="True" StartPoint="10,100">
+                        <LineSegment Point="100,100"></LineSegment>
+                        <LineSegment Point="100,50"></LineSegment>
+                    </PathFigure>
+                    <PathFigure IsClosed="False" StartPoint="10,100">
+                        <ArcSegment Point="250,150" Size="200,300" IsLargeArc="False" SweepDirection="Counterclockwise"
+                                    ></ArcSegment>                       
+                    </PathFigure>
+                </PathGeometry>
+            </Path.Data>
+        </Path>-->
+        <!--<Path Stroke="blue" Data="M 10,100 L 100,100 L100,50 Z" />-->
+        <!--<Path Stroke="blue" Data="M10 100 L100 100 L100 50 Z" /> StreamGeometry --><!--
+        <Path>
+            <Path.Data>
+                <PathGeometry Figures="M 10,100 L100,100 L 100,50 Z"></PathGeometry>
+            </Path.Data>
+        </Path>
+    </Canvas>-->
 </Window>

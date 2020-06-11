@@ -43,18 +43,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AtomicOperationDemo.cs" />
-    <Compile Include="CountdownEventDemo.cs" />
-    <Compile Include="ManualResetEventDemo.cs" />
-    <Compile Include="ManualResetEventSlimDemo.cs" />
-    <Compile Include="SemaphoreSlim.cs" />
-    <Compile Include="SemaphoreSlimDemo.cs" />
-    <Compile Include="SpinLockDemo1.cs" />
-    <Compile Include="SpinLockDemo.cs" />
-    <Compile Include="MutexDemo.cs" />
-    <Compile Include="BarrierDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\AtomicOperationDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\CountdownEventDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\ManualResetEventDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\ManualResetEventSlimDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\SemaphoreSlim.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\SemaphoreSlimDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\SpinLockDemo1.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\SpinLockDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\MutexDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\BarrierDemo.cs" />
     <Compile Include="BlockCollectionDemo.cs" />
-    <Compile Include="ConcurrentStackDemo.cs" />
+    <Compile Include="Chapter5-CoordinateDataStructure\ConcurrentStackDemo.cs" />
+    <Compile Include="Chapter6-PLNQ\PlnqDemo5.cs" />
+    <Compile Include="Chapter6-PLNQ\PlnqDemo4.cs" />
+    <Compile Include="Chapter6-PLNQ\PlnqDemo3.cs" />
+    <Compile Include="Chapter6-PLNQ\PlnqDemo2.cs" />
+    <Compile Include="Chapter6-PLNQ\PlnqDemo1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

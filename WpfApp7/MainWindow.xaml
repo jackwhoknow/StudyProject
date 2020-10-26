@@ -11,14 +11,26 @@
             <RectangleGeometry Rect="0,0 100,100" RadiusX="5" RadiusY="5"/>
             <EllipseGeometry  Center="150,50" RadiusX="35" RadiusY="25"/>
         </GeometryGroup>
+        <Style x:Key="SimpleButtonFocusStyle" TargetType="Button">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border>
+                            <Rectangle Margin="2" Stroke="#60000000" StrokeThickness="1" StrokeDashArray="1 2"></Rectangle>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
-        <Button Margin="10" Padding="5" Width="200" Height="40" Style="{StaticResource CustomButtonBtyle}">
+        <Button Margin="10" Padding="5" Width="200" Height="40">
             A simple Button with a Custom Template
         </Button>
         <TextBox Name="AAA" Width="200" Height="50" VerticalAlignment="Bottom"></TextBox>
         <ListBox x:Name="lb1"  Width="100" HorizontalAlignment="Left"></ListBox>
     </Grid>
+    
     <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

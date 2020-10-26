@@ -1,0 +1,13 @@
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\Liugs.exe.config
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\Liugs.exe
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\Liugs.pdb
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\CGALForDotnet.dll
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\PrimitiveSvgBuilder.dll
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\CGALForDotnet.pdb
+C:\Users\liuguangsheng\source\repos\Liugs\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\liuguangsheng\source\repos\Liugs\obj\Debug\Liugs.csprojAssemblyReference.cache
+C:\Users\liuguangsheng\source\repos\Liugs\obj\Debug\Liugs.csproj.CoreCompileInputs.cache
+C:\Users\liuguangsheng\source\repos\Liugs\obj\Debug\Liugs.csproj.CopyComplete
+C:\Users\liuguangsheng\source\repos\Liugs\obj\Debug\Liugs.exe
+C:\Users\liuguangsheng\source\repos\Liugs\obj\Debug\Liugs.pdb

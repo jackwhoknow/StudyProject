@@ -1,0 +1,16 @@
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\bin\Debug\WpfStyleLibrary.exe.config
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\bin\Debug\WpfStyleLibrary.exe
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\bin\Debug\WpfStyleLibrary.pdb
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\MainWindow.g.cs
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\App.g.cs
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary_MarkupCompile.cache
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary_MarkupCompile.lref
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\Dictionary1.baml
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\MainWindow.baml
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary.g.resources
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary.Properties.Resources.resources
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary.csproj.GenerateResource.cache
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary.csproj.CoreCompileInputs.cache
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary.exe
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary.pdb
+C:\Users\liuguangsheng\source\repos\WpfStyleLibrary\obj\Debug\WpfStyleLibrary.csprojAssemblyReference.cache

@@ -18,3 +18,6 @@ C:\Users\liuguangsheng\source\repos\WpfApp7\obj\Debug\WpfApp7.csproj.CoreCompile
 C:\Users\liuguangsheng\source\repos\WpfApp7\obj\Debug\WpfApp7.csproj.CopyComplete
 C:\Users\liuguangsheng\source\repos\WpfApp7\obj\Debug\WpfApp7.exe
 C:\Users\liuguangsheng\source\repos\WpfApp7\obj\Debug\WpfApp7.pdb
+C:\Users\liuguangsheng\source\repos\WpfApp7\bin\Debug\WpfStyleLibrary.exe
+C:\Users\liuguangsheng\source\repos\WpfApp7\bin\Debug\WpfStyleLibrary.pdb
+C:\Users\liuguangsheng\source\repos\WpfApp7\bin\Debug\WpfStyleLibrary.exe.config

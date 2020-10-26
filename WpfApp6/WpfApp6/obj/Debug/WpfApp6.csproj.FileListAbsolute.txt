@@ -16,3 +16,4 @@ C:\Users\liuguangsheng\source\repos\WpfApp6\WpfApp6\obj\Debug\Dictionary1.baml
 C:\Users\liuguangsheng\source\repos\WpfApp6\WpfApp6\obj\Debug\App.baml
 C:\Users\liuguangsheng\source\repos\WpfApp6\WpfApp6\obj\Debug\Dictionary2.baml
 C:\Users\liuguangsheng\source\repos\WpfApp6\WpfApp6\obj\Debug\Dictionary3.baml
+C:\Users\liuguangsheng\source\repos\WpfApp6\WpfApp6\obj\Debug\WpfApp6.csprojAssemblyReference.cache

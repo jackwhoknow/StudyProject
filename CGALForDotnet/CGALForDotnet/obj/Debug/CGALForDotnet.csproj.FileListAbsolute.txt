@@ -1,0 +1,5 @@
+C:\Users\liuguangsheng\source\repos\CGALForDotnet\CGALForDotnet\bin\Debug\CGALForDotnet.dll
+C:\Users\liuguangsheng\source\repos\CGALForDotnet\CGALForDotnet\bin\Debug\CGALForDotnet.pdb
+C:\Users\liuguangsheng\source\repos\CGALForDotnet\CGALForDotnet\obj\Debug\CGALForDotnet.csproj.CoreCompileInputs.cache
+C:\Users\liuguangsheng\source\repos\CGALForDotnet\CGALForDotnet\obj\Debug\CGALForDotnet.dll
+C:\Users\liuguangsheng\source\repos\CGALForDotnet\CGALForDotnet\obj\Debug\CGALForDotnet.pdb

@@ -99,6 +99,10 @@
       <Project>{17b8ec47-1db6-4002-ab8e-6678bd5138ce}</Project>
       <Name>WpfApp6</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WpfStyleLibrary\WpfStyleLibrary.csproj">
+      <Project>{668d6aeb-4269-4d2a-b4ef-0e05d98ffcec}</Project>
+      <Name>WpfStyleLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Happy.jpg" />

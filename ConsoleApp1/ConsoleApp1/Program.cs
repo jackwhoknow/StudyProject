@@ -67,14 +67,10 @@ namespace DesignPattern
             {
                 StragegyMethod(); // 策略
             }
-            #region---------- 模板方法 -----------
-            //AbstractDisplay d1 = new CharDisplay('H');
-            //AbstractDisplay d2 = new StringDisplay("Hello,World");
-            //AbstractDisplay d3 = new StringDisplay("你好,中国");
-            //d1.Display();
-            //d2.Display();
-            //d3.Display();
-            #endregion
+            if(false)
+            {
+                TemplateMethod(); //模板方法
+            }
 
             #region---------- 简单工厂 -----------
             //Operation operFactory = OperationFactory.CreateOperation("+");
@@ -505,7 +501,12 @@ namespace DesignPattern
 
         static void TemplateMethod()
         {
-            //TODO
+            AbstractDisplay d1 = new CharDisplay('H');
+            AbstractDisplay d2 = new StringDisplay("Hello,World");
+            AbstractDisplay d3 = new StringDisplay("你好,中国");
+            d1.Display();
+            d2.Display();
+            d3.Display();
         }
 
         static void StragegyMethod()

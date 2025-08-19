@@ -55,19 +55,11 @@ namespace DesignPattern
             //Console.WriteLine("In Main: Aborting the Child thread");
             //childThread.Abort();
 
-            #region---------- 遍历模式 -----------
-            //BookShelf bookShelf = new BookShelf();
-            //bookShelf.AppendBook(new Book("Around the World in 80 days"));
-            //bookShelf.AppendBook(new Book("Bible"));
-            //bookShelf.AppendBook(new Book("Cinderella"));
-            //bookShelf.AppendBook(new Book("Daddy-Long-Legs"));
-            //Iterator iterator = bookShelf.iterator();
-            //while(iterator.hasNext())
-            //{
-            //    Book book = (Book)iterator.Next();
-            //    Console.WriteLine(book.Name);
-            //}
-            #endregion
+            if(false)
+            {
+                IteratorMode(); //遍历模式
+            }
+
             #region---------- 适配器 -------------
             //类适配器
             //IPrint print = new PrintBanner("Hello");
@@ -497,6 +489,21 @@ namespace DesignPattern
             osn.Accept(cv2);
             #endregion
             Console.ReadKey();
+        }
+
+        static void IteratorMode()
+        {
+            BookShelf bookShelf = new BookShelf();
+            bookShelf.AppendBook(new Book("Around the World in 80 days"));
+            bookShelf.AppendBook(new Book("Bible"));
+            bookShelf.AppendBook(new Book("Cinderella"));
+            bookShelf.AppendBook(new Book("Daddy-Long-Legs"));
+            Iterator iterator = bookShelf.iterator();
+            while (iterator.hasNext())
+            {
+                Book book = (Book)iterator.Next();
+                Console.WriteLine(book.Name);
+            }
         }
     }
 }

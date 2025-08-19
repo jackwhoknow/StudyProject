@@ -67,15 +67,27 @@ namespace DesignPattern
             {
                 StragegyMethod(); // 策略
             }
-            if(false)
-            {
-                TemplateMethod(); //模板方法
-            }
+            
             if(false)
             {
                 SimpleFactoryMethod();// 简单工厂
-            }
-           
+            }           
+
+            #region---------- 模板方法 -----------
+            //AbstractDisplay d1 = new CharDisplay('H');
+            //AbstractDisplay d2 = new StringDisplay("Hello,World");
+            //AbstractDisplay d3 = new StringDisplay("你好,中国");
+            //d1.Display();
+            //d2.Display();
+            //d3.Display();
+            #endregion
+
+            #region---------- 简单工厂 -----------
+            //Operation operFactory = OperationFactory.CreateOperation("+");
+            //operFactory.Number1 = 100;
+            //operFactory.Number2 = 200;
+            //double result = operFactory.GetResult();
+            #endregion
 
             #region----------- 装饰模式 ----------
             //Person xc = new Person("小菜");
@@ -495,16 +507,6 @@ namespace DesignPattern
             target.GetPressure();
             target.GetHumidity();
             target.GetUltraviolet();
-        }
-
-        static void TemplateMethod()
-        {
-            AbstractDisplay d1 = new CharDisplay('H');
-            AbstractDisplay d2 = new StringDisplay("Hello,World");
-            AbstractDisplay d3 = new StringDisplay("你好,中国");
-            d1.Display();
-            d2.Display();
-            d3.Display();
         }
 
         static void StragegyMethod()

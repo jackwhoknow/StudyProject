@@ -510,5 +510,10 @@ namespace DesignPattern
             target.GetHumidity();
             target.GetUltraviolet();
         }
+
+        static void TemplateMethod()
+        {
+            //TODO
+        }
     }
 }

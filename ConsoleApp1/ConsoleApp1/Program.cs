@@ -63,6 +63,10 @@ namespace DesignPattern
             {
                 AdpaterMode(); //适配器
             }
+            if(false)
+            {
+                StragegyMethod(); // 策略
+            }
             #region---------- 模板方法 -----------
             //AbstractDisplay d1 = new CharDisplay('H');
             //AbstractDisplay d2 = new StringDisplay("Hello,World");
@@ -77,18 +81,6 @@ namespace DesignPattern
             //operFactory.Number1 = 100;
             //operFactory.Number2 = 200;
             //double result = operFactory.GetResult();
-            #endregion
-
-            #region---------- 策略 ---------------
-            //Context context;
-            //context = new Context(new ConcreteStragegyA());
-            //context.ContextInterface();
-
-            //context = new Context(new ConcreteStragegyB());
-            //context.ContextInterface();
-
-            //context = new Context(new ConcreteStragegyC());
-            //context.ContextInterface();
             #endregion
 
             #region----------- 装饰模式 ----------
@@ -514,6 +506,19 @@ namespace DesignPattern
         static void TemplateMethod()
         {
             //TODO
+        }
+
+        static void StragegyMethod()
+        {
+            Context context;
+            context = new Context(new ConcreteStragegyA());
+            context.ContextInterface();
+
+            context = new Context(new ConcreteStragegyB());
+            context.ContextInterface();
+
+            context = new Context(new ConcreteStragegyC());
+            context.ContextInterface();
         }
     }
 }

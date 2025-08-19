@@ -59,22 +59,10 @@ namespace DesignPattern
             {
                 IteratorMode(); //遍历模式
             }
-
-            #region---------- 适配器 -------------
-            //类适配器
-            //IPrint print = new PrintBanner("Hello");
-            //print.printWeak();
-            //print.printStrong();
-
-            //对象适配器
-            //实例化一个适配器给目标接口 
-            //Target target = new Adapter();
-            //下面的这些就是客户端可以被识别接口了
-            //target.GetTemperature();
-            //target.GetPressure();
-            //target.GetHumidity();
-            //target.GetUltraviolet();
-            #endregion
+            if(false)
+            {
+                AdpaterMode(); //适配器
+            }
             #region---------- 模板方法 -----------
             //AbstractDisplay d1 = new CharDisplay('H');
             //AbstractDisplay d2 = new StringDisplay("Hello,World");
@@ -504,6 +492,23 @@ namespace DesignPattern
                 Book book = (Book)iterator.Next();
                 Console.WriteLine(book.Name);
             }
+        }
+
+        static void AdpaterMode()
+        {
+            //类适配器
+            IPrint print = new PrintBanner("Hello");
+            print.printWeak();
+            print.printStrong();
+
+            //对象适配器
+            //实例化一个适配器给目标接口
+            Target target = new Adapter();
+            //下面的这些就是客户端可以被识别接口了
+            target.GetTemperature();
+            target.GetPressure();
+            target.GetHumidity();
+            target.GetUltraviolet();
         }
     }
 }

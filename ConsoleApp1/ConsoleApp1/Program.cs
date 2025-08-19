@@ -71,13 +71,11 @@ namespace DesignPattern
             {
                 TemplateMethod(); //模板方法
             }
-
-            #region---------- 简单工厂 -----------
-            //Operation operFactory = OperationFactory.CreateOperation("+");
-            //operFactory.Number1 = 100;
-            //operFactory.Number2 = 200;
-            //double result = operFactory.GetResult();
-            #endregion
+            if(false)
+            {
+                SimpleFactoryMethod();// 简单工厂
+            }
+           
 
             #region----------- 装饰模式 ----------
             //Person xc = new Person("小菜");
@@ -520,6 +518,14 @@ namespace DesignPattern
 
             context = new Context(new ConcreteStragegyC());
             context.ContextInterface();
+        }
+
+         static void SimpleFactoryMethod()
+        {
+            Operation operFactory = OperationFactory.CreateOperation("+");
+            operFactory.Number1 = 100;
+            operFactory.Number2 = 200;
+            double result = operFactory.GetResult();
         }
     }
 }

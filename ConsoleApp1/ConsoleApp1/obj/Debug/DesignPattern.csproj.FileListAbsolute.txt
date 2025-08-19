@@ -7,3 +7,12 @@ C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPatt
 C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.Form1.resources
 C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csproj.GenerateResource.cache
 C:\Users\liuguangsheng\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csprojAssemblyReference.cache
+D:\StudyProject\ConsoleApp1\ConsoleApp1\bin\Debug\DesignPattern.exe.config
+D:\StudyProject\ConsoleApp1\ConsoleApp1\bin\Debug\DesignPattern.exe
+D:\StudyProject\ConsoleApp1\ConsoleApp1\bin\Debug\DesignPattern.pdb
+D:\StudyProject\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csproj.AssemblyReference.cache
+D:\StudyProject\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.Form1.resources
+D:\StudyProject\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csproj.GenerateResource.cache
+D:\StudyProject\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.csproj.CoreCompileInputs.cache
+D:\StudyProject\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.exe
+D:\StudyProject\ConsoleApp1\ConsoleApp1\obj\Debug\DesignPattern.pdb

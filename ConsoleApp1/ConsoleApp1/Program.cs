@@ -58,60 +58,15 @@ namespace DesignPattern
             if(false)
             {
                 IteratorMode(); //遍历模式
-            }
-            if(false)
-            {
                 AdpaterMode(); //适配器
-            }
-            if(false)
-            {
                 StragegyMethod(); // 策略
-            }
-            
-            if(false)
-            {
                 SimpleFactoryMethod();// 简单工厂
-            }           
+                TemplateMethod(); // 模板方法
+                DecorateMethod(); // 装饰模式
+                ProxyMode(); // 代理模式
+                FactoryMode(); // 工厂方法模式
+            }
 
-            #region---------- 模板方法 -----------
-            //AbstractDisplay d1 = new CharDisplay('H');
-            //AbstractDisplay d2 = new StringDisplay("Hello,World");
-            //AbstractDisplay d3 = new StringDisplay("你好,中国");
-            //d1.Display();
-            //d2.Display();
-            //d3.Display();
-            #endregion
-
-            #region---------- 简单工厂 -----------
-            //Operation operFactory = OperationFactory.CreateOperation("+");
-            //operFactory.Number1 = 100;
-            //operFactory.Number2 = 200;
-            //double result = operFactory.GetResult();
-            #endregion
-
-            #region----------- 装饰模式 ----------
-            //Person xc = new Person("小菜");
-            //BigTrouser bt = new BigTrouser();
-            //Tshirts tshirt = new Tshirts();
-
-            //bt.Decorate(xc);
-            //tshirt.Decorate(bt);
-            //tshirt.Show();
-            #endregion
-            #region---------- 代理模式 ----------
-            //SchoolGirl xiaoHong = new SchoolGirl { Name = "小红" };
-            //Proxy proxy = new Proxy(xiaoHong);
-            //proxy.GiveChocolate();
-            //proxy.GiveDolls();
-            //proxy.GiveFlowers();
-            #endregion
-            #region-----------工厂方法模式 -------------
-            //IFactory operation = new AddFactory();
-            //MathOperation mathOperate= operation.CreateOperation();
-            //mathOperate.Number1 = 10;
-            //mathOperate.Number2 = 20;
-            //double result = mathOperate.GetResult();
-            #endregion
             #region---------- 原型模式 -----------------
             //Resume a = new Resume("大鸟");
             //a.SetPersonalInfo(true, 27);
@@ -528,6 +483,41 @@ namespace DesignPattern
             operFactory.Number1 = 100;
             operFactory.Number2 = 200;
             double result = operFactory.GetResult();
+        }
+        static void TemplateMethod()
+        {
+            AbstractDisplay d1 = new CharDisplay('H');
+            AbstractDisplay d2 = new StringDisplay("Hello,World");
+            AbstractDisplay d3 = new StringDisplay("你好,中国");
+            d1.Display();
+            d2.Display();
+            d3.Display();
+        }
+        static void DecorateMethod()
+        {
+            Person xc = new Person("小菜");
+            BigTrouser bt = new BigTrouser();
+            Tshirts tshirt = new Tshirts();
+
+            bt.Decorate(xc);
+            tshirt.Decorate(bt);
+            tshirt.Show();
+        }
+        static void ProxyMode()
+        {
+            SchoolGirl xiaoHong = new SchoolGirl { Name = "小红" };
+            Proxy proxy = new Proxy(xiaoHong);
+            proxy.GiveChocolate();
+            proxy.GiveDolls();
+            proxy.GiveFlowers();
+        }
+        static void FactoryMode()
+        {
+            IFactory operation = new AddFactory();
+            MathOperation mathOperate = operation.CreateOperation();
+            mathOperate.Number1 = 10;
+            mathOperate.Number2 = 20;
+            double result = mathOperate.GetResult();
         }
     }
 }

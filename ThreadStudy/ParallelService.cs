@@ -42,6 +42,40 @@ namespace ThreadStudy
             });
         }
 
+        public static void Demo3()
+        {
+            var count = 5000;
+            var datas = BuildTestDatas(count);
+            var loopResult = Parallel.For(0, count, async (int i,ParallelLoopState pls) =>
+            {
+                var data = datas[i];
+                Console.WriteLine($"data id:{data.Id},data value:{data.Value}, task:{Task.CurrentId},thread:{Thread.CurrentThread.ManagedThreadId}");
+                await Task.Delay(10);
+                if(i>100)
+                {
+                    pls.Break();
+                }
+            });
+        }
+
+        public static void Demo4()
+        {
+            Parallel.For<string>(0, 20, () =>
+            {
+                return Guid.NewGuid().ToString();
+            }
+            , (i, pls, str1) =>
+            {
+                Console.WriteLine($"body i： {i}, str1： {str1}, thread： {Thread.CurrentThread.ManagedThreadId},task：{Task.CurrentId}");
+                Thread.Sleep(10);
+                return $"i： {i}";
+            },
+            (str1) =>
+            {
+                Console.WriteLine($"finlly {str1}");
+            });
+        }
+
         private static List<DataInfo> BuildTestDatas(int count)
         {
             var datas = new List<DataInfo>();

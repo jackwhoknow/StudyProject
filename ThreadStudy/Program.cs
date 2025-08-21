@@ -9,7 +9,7 @@ namespace ThreadStudy
         {
             var sw = new Stopwatch();
             sw.Start();
-            ParallelService.Demo4();
+            ParallelService.ParallelInvoke();
             sw.Stop();
             Console.WriteLine($"ellapsed time:{sw.ElapsedMilliseconds/1000.0}s");
             Console.ReadLine();

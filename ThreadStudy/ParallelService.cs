@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -76,6 +77,63 @@ namespace ThreadStudy
             });
         }
 
+        public static void Demo5()
+        {
+            var data = BuildTestDatas();
+            ParallelLoopResult result = Parallel.ForEach<string>(data, s =>
+            {
+                Console.WriteLine(s);
+            });
+        }
+
+        public static void Demo6()
+        {
+            var data = BuildTestDatas();
+            ParallelLoopResult result = Parallel
+                .ForEach<string>(data, (s,pls,l) =>
+            {
+                Console.WriteLine($"{s}  {l+1}");
+                if(s=="one")
+                {
+                    pls.Break();
+                }
+            });
+        }
+
+        public static void ParallelInvoke()
+        {
+            // 既可以用于任务，又可以用于数据并行性
+            Parallel.Invoke(Foo, Bar, Schcool, Home, Factory, Company, Goverment);
+        }
+        static void Foo()
+        {
+            Console.WriteLine("foo");
+        }
+        static void Bar()
+        {
+            Console.WriteLine("bar");
+        }
+        static void Schcool()
+        {
+            Console.WriteLine("Schcool");
+        }
+        static void Home()
+        {
+            Console.WriteLine("Home");
+        }
+        static void Factory()
+        {
+            Console.WriteLine("Factory");
+        }
+        static void Company()
+        {
+            Console.WriteLine("Company");
+        }
+        static void Goverment()
+        {
+            Console.WriteLine("Goverment");
+        }
+
         private static List<DataInfo> BuildTestDatas(int count)
         {
             var datas = new List<DataInfo>();
@@ -84,6 +142,12 @@ namespace ThreadStudy
                 datas.Add(new DataInfo((i + 1).ToString(), i));
             }
             return datas;
+        }
+        private static string[] BuildTestDatas()
+        {
+            string[] data = { "one","two","three","four","five","six","seven","eight","nine","ten",
+                "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"};
+            return data;
         }
     }
 

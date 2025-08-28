@@ -100,6 +100,87 @@ namespace ThreadStudy
             });
         }
 
+        public static void RunSynchronousTask()
+        {
+            TaskMethod("just the main thread");
+            var t1 = new Task(TaskMethod,"run sync");
+            t1.RunSynchronously();
+        }
+
+        public static void LongRunningTask()
+        {
+            var t1 = new Task(TaskMethod,"long running",TaskCreationOptions.LongRunning);
+            t1.Start();
+        }
+
+        public static void RunTaskWithResult()
+        {
+            var t1 = new Task<Tuple<int, int>>(TaskWithResult,Tuple.Create(8,3));
+            t1.Start();
+            Console.WriteLine(t1.Result);
+            t1.Wait();
+            Console.WriteLine($"result from task:{ t1.Result.Item1},{t1.Result.Item2}");
+        }
+
+        static Tuple<int,int> TaskWithResult(object division)
+        {
+            if(division is Tuple<int, int> tuple)
+            {
+                int result = tuple.Item1/tuple.Item2;
+                int reminder = tuple.Item1 % tuple.Item2;
+                Console.WriteLine("task creates a result...");
+                return Tuple.Create(result, reminder);
+            }           
+            else
+            {
+                return Tuple.Create(0,0);
+            }
+        }
+
+        public static void RunCountinousTask()
+        {
+            var t1 = new Task(DoOnFirst);
+
+            var t2 = t1.ContinueWith(DoOnSecond);
+
+            var t3 = t2.ContinueWith(DoOnThird);
+
+            t1.Start();
+        }
+
+        static void DoOnFirst()
+        {
+            Console.WriteLine($"do some task {Task.CurrentId}");
+            Thread.Sleep(3000);
+        }
+
+        static void DoOnSecond(Task t)
+        {
+            Console.WriteLine($"task {t.Id} finished");
+            Console.WriteLine($"this task id {Task.CurrentId}");
+            Console.WriteLine("second do some work");
+            Thread.Sleep(1000);
+        }
+
+        static void DoOnThird(Task t)
+        {
+            Console.WriteLine($"task {t.Id} finished");
+            Console.WriteLine($"this task id {Task.CurrentId}");
+            Console.WriteLine("third do some work");
+            Thread.Sleep(3000);
+        }
+
+        static object taskMethodLock = new object();
+        static void TaskMethod(object title)
+        {
+            Console.WriteLine(title);
+            Console.WriteLine("Task id: {0},thread: {1}",Task.CurrentId==null?"no task":Task.CurrentId.ToString(),
+                Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine($"is pooled thread:{Thread.CurrentThread.IsThreadPoolThread}");
+            Console.WriteLine($"is background thread:{Thread.CurrentThread.IsBackground}");
+            Console.WriteLine();
+        }
+
         public static void ParallelInvoke()
         {
             // 既可以用于任务，又可以用于数据并行性

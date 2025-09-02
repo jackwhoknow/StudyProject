@@ -141,7 +141,7 @@ namespace ThreadStudy
         {
             var t1 = new Task(DoOnFirst);
 
-            var t2 = t1.ContinueWith(DoOnSecond);
+            var t2 = t1.ContinueWith(DoOnSecond,TaskContinuationOptions.OnlyOnFaulted);
 
             var t3 = t2.ContinueWith(DoOnThird);
 
@@ -169,6 +169,34 @@ namespace ThreadStudy
             Console.WriteLine("third do some work");
             Thread.Sleep(3000);
         }
+
+        public static void ParentAndChild()
+        {
+            var parent = new Task(ParentTask);
+            parent.Start();
+            Thread.Sleep(2000);
+
+            Console.WriteLine(parent.Status);
+            Thread.Sleep(4000);
+            Console.WriteLine(parent.Status);
+        }
+
+        static void ParentTask()
+        {
+            Console.WriteLine($"task id {Task.CurrentId}");
+            var child = new Task(ChildTask);
+            child.Start();
+            //Thread.Sleep(10000);
+            Console.WriteLine("parent start child ");
+        }
+
+        static void ChildTask()
+        {
+            Console.WriteLine("child");
+            Thread.Sleep(50000);
+            Console.WriteLine("child finished");
+        }
+
 
         static object taskMethodLock = new object();
         static void TaskMethod(object title)
@@ -230,6 +258,288 @@ namespace ThreadStudy
                 "eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","twenty"};
             return data;
         }
+
+        public static void RunCancellationTokenSource()
+        {
+            var cts = new CancellationTokenSource();
+            cts.Token.Register(() => { Console.WriteLine("*** token canceled"); });
+            cts.CancelAfter(500);
+
+            try
+            {
+                ParallelLoopResult result = Parallel.For(0, 100, new ParallelOptions()
+                {
+                    CancellationToken = cts.Token,
+                },
+                x =>
+                {
+                    Console.WriteLine($"loop {x} started.");
+                    int sum = 0;
+                    for (int i = 0; i < 100; i++)
+                    {
+                        Thread.Sleep(2);
+                        sum += i;
+                    }
+                    Console.WriteLine($"loop {x} finished.");
+                });
+            }
+            catch(OperationCanceledException ex)
+            {
+                Console.WriteLine($"{ex.Message}");
+            }
+        }
+
+        public static void RunCancelTask()
+        {
+            var cts = new CancellationTokenSource();
+            cts.Token.Register(() => { Console.WriteLine("*** token canceled"); });
+            cts.CancelAfter(500);
+
+            Task t1 = Task.Run(() =>
+            {
+                Console.WriteLine("in task");
+                for(int i=0;i<100;i++)
+                {
+                    Thread.Sleep(100);
+                    CancellationToken token= cts.Token;
+
+                    if(token.IsCancellationRequested)
+                    {
+                        Console.WriteLine("cancelling was requested, "+"cancelling from within task");
+                        token.ThrowIfCancellationRequested();
+                        break;
+                    }
+                    Console.WriteLine("in loop");
+                }
+                Console.WriteLine("task finished without cancellation");
+            },cts.Token);
+
+            try
+            {
+                t1.Wait();
+            }
+            catch (AggregateException ex)
+            {
+                Console.WriteLine($"exception: {ex.GetType().Name},{ex.Message}");
+                foreach(var innerException in ex.InnerExceptions)
+                {
+                    Console.WriteLine($"inner exception: {innerException.GetType().Name},{innerException.Message}");
+                }
+            }
+        }
+
+        public static void RunThreadPool()
+        {
+            int nWorkerThreads;
+            int nCompletionPortThreads;
+            ThreadPool.GetMaxThreads(out nWorkerThreads,out nCompletionPortThreads);
+
+            Console.WriteLine($"worker thread count：{nWorkerThreads}，I/O thread count: {nCompletionPortThreads}");
+
+            for(int i=0;i<50;i++)
+            {
+                ThreadPool.QueueUserWorkItem(JobForAThread);
+            }
+
+            Thread.Sleep(3000);
+        }
+
+
+        static void JobForAThread(object state)
+        {
+            for(int i=0;i<10;i++)
+            {
+                Console.WriteLine($"loop {i},running inside pooled thread {Thread.CurrentThread.ManagedThreadId}");
+                Thread.Sleep(50);
+            }
+        }
+
+        public static void RaceConditions()
+        {
+            var state = new StateObject();
+            for(int i=0;i<3;i++)
+            {
+                Task.Run(() =>
+                {
+                    new SampleTask().RaceCondition(state);
+                });
+            }
+        }
+        public static void RunDeadLock()
+        {
+            var state1 = new StateObject();
+            var state2 = new StateObject();
+            new Task(new SampleTask2(state1, state2).DeadLock1).Start();
+            new Task(new SampleTask2(state1, state2).DeadLock2).Start();
+        }
+        public static void RunLockSync()
+        {
+            int numTasks = 20;
+            var state = new SharedState();
+            var tasks = new Task[numTasks]; 
+            for(int i=0;i<numTasks;i++)
+            {
+                tasks[i] = Task.Run(new Job(state).DoTheJob);
+            }
+            for (int i = 0; i < numTasks; i++)
+            {
+                tasks[i].Wait();
+            }
+            Console.WriteLine($"summarized {state.State}");
+        }
+        public static void RunWaitHandle()
+        {
+            bool createdNew;
+            var mutex = new Mutex(false,"SingletonWinAppMutex",out createdNew);
+            if(!createdNew)
+            {
+                Console.WriteLine("You can only start one instance of the application");
+                return;
+            }
+        }
+
+        public static void RunSemaphoreSlim()
+        {
+            int taskCount = 16;
+            int semaphoreCount = 3;
+            var semphore = new SemaphoreSlim(semaphoreCount, semaphoreCount);
+            var tasks = new Task[taskCount];
+
+            for(int i=0;i< taskCount;i++)
+            {
+                tasks[i]=Task.Run(()=> RunSemaphoreSlim(semphore));
+            }
+
+            Task.WaitAll(tasks);
+
+            Console.WriteLine("All tasks finished");
+        }
+        private static void RunSemaphoreSlim(SemaphoreSlim semaphore)
+        {
+            bool isComplete = false;
+            while(!isComplete)
+            {
+                if(semaphore.Wait(600))
+                {
+                    try
+                    {
+                        Console.WriteLine($"Task {Task.CurrentId} locks the semaphore");
+                        Thread.Sleep(5000);
+                    }
+                    finally
+                    {
+                        Console.WriteLine($"Task {Task.CurrentId} releases the semaphore");
+                        semaphore.Release();
+                        isComplete = true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"Timeout for task {Task.CurrentId}; wait again");
+                }
+            }
+        }
+    }
+
+    class SampleTask
+    {
+        public void RaceCondition(object o)
+        {
+            Trace.Assert(o is StateObject, "o must be of type StateObject");
+            StateObject state = o as StateObject;
+            int i = 0;
+            while(true)
+            {
+                state.ChangeState(i++);
+            }
+        }
+    }
+
+    class SampleTask2
+    {
+        private StateObject _s1;
+        private StateObject _s2;
+        public SampleTask2(StateObject s1, StateObject s2)
+        {
+            _s1 = s1;
+            _s2 = s2;
+        }
+
+        public void DeadLock1()
+        {
+            Console.WriteLine($"DeadLock1-1");
+            int i = 0;
+            Console.WriteLine($"DeadLock1-2");
+            while (true)
+            {
+                Console.WriteLine($"DeadLock1-3");
+                lock (_s1)
+                {
+                    Console.WriteLine($"DeadLock1-4");
+                    lock (_s2)
+                    {
+                        Console.WriteLine($"DeadLock1-5");
+                        _s1.ChangeState(i);
+                        Console.WriteLine($"DeadLock1-6");
+                        _s2.ChangeState(i++);
+                        Console.WriteLine($"DeadLock1-7");
+                        Console.WriteLine($"still running,{i}");
+                        Console.WriteLine($"DeadLock1-8");
+                    }
+                    Console.WriteLine($"DeadLock1-9");
+                }
+            }
+        }
+
+        public void DeadLock2()
+        {
+            Console.WriteLine($"DeadLock2-1");
+            int i = 0;
+            Console.WriteLine($"DeadLock2-2");
+            while (true)
+            {
+                Console.WriteLine($"DeadLock2-3");
+                lock (_s2)
+                {
+                    Console.WriteLine($"DeadLock2-4");
+                    lock (_s1)
+                    {
+                        Console.WriteLine($"DeadLock2-5");
+                        _s1.ChangeState(i);
+                        Console.WriteLine($"DeadLock2-6");
+                        _s2.ChangeState(i++);
+                        Console.WriteLine($"DeadLock2-7");
+                        Console.WriteLine($"still running,{i}");
+                        Console.WriteLine($"DeadLock2-8");
+                    }
+                    Console.WriteLine($"DeadLock2-9");
+                }
+            }
+        }
+    }
+
+    class StateObject
+    {
+        private int state = 5;
+        //private object sync = new object();
+        public void ChangeState(int loop)
+        {
+            //lock(sync)
+            //{
+            Console.WriteLine($"ChangeState-1");
+            if (state == 5)
+                {
+                Console.WriteLine($"ChangeState-2");
+                state++;
+                Console.WriteLine($"ChangeState-3");
+                Trace.Assert(state == 6, $"Race condition occurred after {loop} loops");
+                Console.WriteLine($"ChangeState-4");
+            }
+            Console.WriteLine($"ChangeState-5");
+            state = 5;
+            Console.WriteLine($"ChangeState-6");
+            //}            
+        }
     }
 
     class DataInfo
@@ -240,6 +550,46 @@ namespace ThreadStudy
         {
             Id = id;
             Value = value;
+        }
+    }
+    public class SharedState
+    {
+        private int _state;
+        private object syncRoot = new object();
+        public int State 
+        { 
+            get
+            {
+                lock(syncRoot)
+                {
+                    return _state;
+                }
+            }
+            set
+            {
+                lock(syncRoot)
+                {
+                    _state = value;
+                }
+            }
+        }
+    }
+    class Job
+    {
+        SharedState _sharedState;
+        public Job(SharedState sharedState)
+        {
+            this._sharedState = sharedState;
+        }
+        public void DoTheJob()
+        {
+            for(int i=0;i<50000;i++)
+            {
+                lock(_sharedState)
+                {
+                    _sharedState.State += 1;
+                }                
+            }            
         }
     }
 }

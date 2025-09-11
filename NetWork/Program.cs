@@ -11,7 +11,10 @@ namespace NetWork
         static void Main(string[] args)
         {
             //NetworkUtils.GetData();
-            NetworkUtils.ShowPage();
+            //NetworkUtils.ShowPage();
+            //NetworkUtils.ShowUri();
+            //NetworkUtils.ShowUriBuilder();
+            NetworkUtils.DnsLookUp();
             Console.ReadLine();
         }      
     }

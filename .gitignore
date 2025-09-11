@@ -12,3 +12,11 @@ NetWork/.vs/
 NetWork/obj/
 NetWork/bin/
 NetWork/Properties/
+
+SocketClient/.vs/
+SocketClient/obj/
+SocketClient/bin/
+
+SocketServer/.vs/
+SocketServer/obj/
+SocketServer/bin/

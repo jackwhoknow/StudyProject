@@ -12,6 +12,10 @@ namespace SocketClient
     {
         static void Main(string[] args)
         {
+            TcpReceive.Run();
+        }
+        static void Link()
+        {
            
             IPHostEntry ipHost = Dns.GetHostEntry("127.0.0.1");
             IPAddress ipAddress = ipHost.AddressList[0];

@@ -12,23 +12,28 @@ namespace SocketServer
     {
         static void Main(string[] args)
         {
+            TcpServer.Run();
+        }
+
+        static void RunSocketServer()
+        {
             Console.WriteLine("Starting: Creating Socket object");
-            Socket listener = new Socket(AddressFamily.InterNetwork,SocketType.Stream,ProtocolType.Tcp);
-            listener.Bind(new IPEndPoint(IPAddress.Any,2112));
+            Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            listener.Bind(new IPEndPoint(IPAddress.Any, 2112));
             listener.Listen(10);
 
-            while(true)
+            while (true)
             {
                 Console.WriteLine("Waitting for connection on port 2112");
                 Socket socket = listener.Accept();
-                string receiveValue= string.Empty;
+                string receiveValue = string.Empty;
                 while (true)
                 {
-                    byte[] receivedBytes =new byte[1024];
+                    byte[] receivedBytes = new byte[1024];
                     int numBytes = socket.Receive(receivedBytes);
                     Console.WriteLine("Receiving...");
-                    receiveValue += Encoding.ASCII.GetString(receivedBytes,0, numBytes);
-                    if(numBytes< receivedBytes.Length)
+                    receiveValue += Encoding.ASCII.GetString(receivedBytes, 0, numBytes);
+                    if (numBytes < receivedBytes.Length)
                     {
                         break;
                     }

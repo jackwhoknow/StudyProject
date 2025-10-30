@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,12 +16,31 @@ namespace NetWork
         {
             HttpClient client = new HttpClient(new MessageHandler("error"));
             HttpResponseMessage response = null;
-            response = await client.GetAsync("https://www.baidu.com/?tn=68018901_16_pg");
+            client.DefaultRequestHeaders.Add("Accept", "application/json;odata=verbose");
+            EnumerateHeaders(client.DefaultRequestHeaders);
+            string requestUri = "http://services.odata.org/Northwind/Northwind.svc/Regions";
+            response = await client.GetAsync(requestUri);
             if(response.IsSuccessStatusCode)
             {
                 Console.WriteLine($"Response Status Code: {response.StatusCode} {response.ReasonPhrase}");
                 string responseBodyContent = response.Content.ReadAsStringAsync().Result;
+                Console.WriteLine(responseBodyContent);
                 Console.WriteLine($"Received payload of {responseBodyContent.Length} characters");
+
+                EnumerateHeaders(response.Headers);
+            }
+        }
+
+        private static void EnumerateHeaders(HttpHeaders headers)
+        {
+            foreach(var header in headers)
+            {
+                var sb = new StringBuilder();
+                foreach(var val in header.Value)
+                {
+                    sb.Append(val);
+                }
+                Console.WriteLine($"Header: {header.Key} Value: {sb.ToString()}" );
             }
         }
 

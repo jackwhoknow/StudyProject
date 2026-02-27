@@ -1,0 +1,45 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.cache
+*.ilk
+*.pdb
+*.obj
+*.exe
+*.dll
+*.lib
+x64/
+Debug/
+Release/
+
+# CGAL and dependencies (large files)
+CGAL-6.1.1/
+CGAL-6.1.1.zip
+CGAL-6.1.1-win64-auxiliary-libraries-gmp-mpfr.zip
+auxiliary/
+vcpkg/
+
+# Generated files
+triangle.svg
+*.svg
+
+# Build artifacts
+build/
+CMakeCache.txt
+CMakeFiles/
+
+# IDE
+*.sln.docstates
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+nul

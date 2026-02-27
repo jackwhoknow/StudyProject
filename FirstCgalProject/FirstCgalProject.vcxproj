@@ -136,10 +136,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Geometry.cpp" />
+    <ClCompile Include="PolygonGeometry.cpp" />
+    <ClCompile Include="CircleGeometry.cpp" />
+    <ClCompile Include="PolygonWithHoles.cpp" />
+    <ClCompile Include="HoleCreationProcessor.cpp" />
+    <ClCompile Include="GeometryUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="GeometryBase.h" />
+    <ClInclude Include="PolygonGeometry.h" />
+    <ClInclude Include="CircleGeometry.h" />
+    <ClInclude Include="PolygonWithHoles.h" />
+    <ClInclude Include="HoleCreationProcessor.h" />
+    <ClInclude Include="GeometryUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

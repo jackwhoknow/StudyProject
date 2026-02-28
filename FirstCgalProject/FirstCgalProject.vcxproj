@@ -141,6 +141,7 @@
     <ClCompile Include="PolygonWithHoles.cpp" />
     <ClCompile Include="HoleCreationProcessor.cpp" />
     <ClCompile Include="GeometryUtils.cpp" />
+    <ClCompile Include="PolygonValidator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeometryBase.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="PolygonWithHoles.h" />
     <ClInclude Include="HoleCreationProcessor.h" />
     <ClInclude Include="GeometryUtils.h" />
+    <ClInclude Include="PolygonValidator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

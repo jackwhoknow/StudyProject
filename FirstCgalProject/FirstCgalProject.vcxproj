@@ -143,6 +143,7 @@
     <ClCompile Include="GeometryUtils.cpp" />
     <ClCompile Include="PolygonValidator.cpp" />
     <ClCompile Include="GeometryRelations.cpp" />
+    <ClCompile Include="CurvedPolygon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeometryBase.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="GeometryUtils.h" />
     <ClInclude Include="PolygonValidator.h" />
     <ClInclude Include="GeometryRelations.h" />
+    <ClInclude Include="CurvedPolygon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
